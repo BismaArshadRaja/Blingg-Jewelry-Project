@@ -4,7 +4,7 @@ const Contact = () => {
     return(
         <div>
             <div className="bg-pink-50">
-
+            
             </div>
         </div>
     )
