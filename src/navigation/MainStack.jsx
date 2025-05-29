@@ -1,24 +1,27 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route} from "react-router-dom";
 import Home from "../pages/Home";
-import Offers from "../pages/Offers";
-import FlatSale from "../pages/FlatSale";
-import DailyDeals from "../pages/DailyDeals";
-import Profile from "../pages/Profile";
+import About from "../pages/About";
+import Contact from "../pages/Contact";
+import RINGS from "../pages/Rings";
+import BRACELETS from "../pages/Bracelets";
+import EARRINGS from "../pages/Earrings";
+import NECKLACES from "../pages/Necklaces";
 
 
-function MainStack({ role }) {
-  if (role !== 'user') return null;
 
-  return (
-    <Routes>
-      <Route path="/Home" element={<Home />} />
-      <Route path="/offers" element={<Offers />} />
-      <Route path="/flatSale" element={<FlatSale />} />
-      <Route path="/dailydeals" element={<DailyDeals />} />
-      <Route path="/profile" element={<Profile />} />
-    </Routes>
-  );
+const MainStack = () => {  
+    return (
+        <Routes>
+            <Routes path="/" element={<Home />} />
+            <Routes path="/about" element={<About />} />
+            <Routes path="/contact" element={<Contact />} />
+            <Routes path="/rings" element={<RINGS />} />
+            <Routes path="/bracelets" element={<BRACELETS />} />
+            <Routes path="/earrings" element={<EARRINGS />} />
+            <Routes path="/necklaces" element={<NECKLACES />} />
+
+        </Routes>
+    );
 }
-
 export default MainStack;

@@ -1,42 +1,33 @@
-import React, { useEffect, useState } from "react";
-import Card from '../components/Card';
-import Slider from '../components/Slider';
-import SmallCard from '../components/SmallCard';
-import Trending from '../components/Trending';
-import Brands from '../components/Brands';
-import Benefits from '../components/Benefits';
-import FlashCards from '../components/FlashCards';
-import { ClipLoader } from "react-spinners";
+import React from "react";
+import Banner from "../components/Banner";
+import BrandsName from "../components/BrandsName";
+import NewArrivals from "../components/NewArrivals";
+import Trending from "../components/Trending";
+import MidBanner from "../components/MidBanner";
+import Content from "../components/content";
+import OurServices from "../components/OurServices";
 
-function Home() {
-  const [loading, setLoading] = useState(true);
+import Products from "../components/Products";  
 
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setLoading(false);
-    }, 1000);
-    return () => clearTimeout(timeout);
-  }, []);
 
-  return (
-    <>
-      {loading ? (
-        <div className="flex justify-center items-center h-screen">
-          <ClipLoader color="#36d7b7" loading={loading} size={60} />
+
+const Home = () => {
+    return(
+        <div>
+           
+            <Banner/>
+            <BrandsName/>
+            <Trending/>
+            <NewArrivals/>
+            <Products/>
+            <MidBanner/>
+            <Content/>
+            <OurServices/>
+           
+            
+            
+            
         </div>
-      ) : (
-        <>
-          <Slider />
-          <SmallCard />
-          <Card />
-          <Trending />
-          <FlashCards />
-          <Brands />
-          <Benefits />
-        </>
-      )}
-    </>
-  );
+    )
 }
-
 export default Home;

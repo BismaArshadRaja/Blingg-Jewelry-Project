@@ -1,129 +1,62 @@
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
-import SmallDash from "./Small Dash";
+import React from "react";
+import Home from "../pages/Home";
+import About from "../pages/About";
+import Contact from "../pages/Contact";
+import Rings from "../pages/Rings";
+import Bracelets from "../pages/Bracelets";
+import Earrings from "../pages/Earrings"; 
+import Necklaces from "../pages/Necklaces";
+import {NavLink} from 'react-router-dom';
+
 
 const Header = () => {
-  const [show, setShow] = useState(false);
-  const [token, setToken] = useState(null);
-  const [desh, setDesh] = useState(false);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const storedToken = localStorage.getItem("token");
-    setToken(storedToken);
-  }, []);
-
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    navigate("/login");
-  };
-
-  const profile = [
-    {
-      name: "Profile",
-      icon: "",
-      color: "red",
-    },
-    {
-      name: "Setting",
-      icon: "",
-      color: "blue",
-      action: () => navigate("/setting"),
-    },
-    {
-      name: "Logout",
-      icon: "",
-      color: "orange",
-      action: handleLogout,
-    },
-  ];
-
-  const country = [
-    {
-      name: "English",
-      img: "https://d91ztyz4qy326.cloudfront.net/storeking/1/english.png",
-    },
-    {
-      name: "Bangla",
-      img: "",
-    },
-    {
-      name: "Arabic",
-      img: "",
-    },
-  ];
-
-  const Dropdown = ({ data }) => (
-    <div className="absolute bg-white shadow-md rounded-md mt-2 right-0 z-50">
-      {data.map((item, index) => (
-        <button
-          key={index}
-          onClick={item.action}
-          className={`block px-4 py-2 text-left text-${item.color || "black"}`}
-        >
-          {item.name}
-        </button>
-      ))}
-    </div>
-  );
-
   return (
-    <>
-      <div className="flex items-center justify-between p-4">
-        <img
-          src="https://demo.storeking.xyz/images/required/theme-logo.png"
-          className="w-24"
-          alt="logo"
+    <div className="bg-white flex items-center justify-between text-xs mb-1 space-x-4 h-[55px] roboto-300 font-sans mt-3 style-normal">
+      {/* Left nav */}
+      <ul className="flex px-20 space-x-5 size[14px] text-gray-700">
+      
+        <li> <NavLink to="/rings" className={"hover:text-[#C7A66D] cursor-pointer"}>RINGS</NavLink></li>
+        <li> <NavLink to="/bracelets" className={"hover:text-[#C7A66D] cursor-pointer"}>BRACELETS</NavLink></li>
+        <li> <NavLink to="/earrings" className={"hover:text-[#C7A66D] cursor-pointer"}>EARRINGS</NavLink></li>
+        <li> <NavLink to="/necklaces" className={"hover:text-[#C7A66D] cursor-pointer"}>NECKLACES</NavLink></li>
+      
+      </ul>
+
+      {/* Logo in center */}
+      <div className=" items-center justify-center w-24 mb-1 text-center  ">
+        <img 
+          className="mr-28 "
+          src="https://websitedemos.net/blingg-jewelry-store-04/wp-content/uploads/sites/1119/2022/08/logo-regular.png"
+          alt="Logo"
+          
         />
-
-        <div className="flex items-center flex-shrink-0">
-          <i className="fa-solid fa-magnifying-glass mr-2" />
-          <input
-            type="text"
-            className="bg-slate-100 hover:bg-white border border-slate-100  focus:outline-none focus:border focus:border-green-500 rounded-full w-96 h-9 p-2"
-            placeholder="Search..."
-          />
-        </div>
-
-        <div className="flex items-center space-x-6">
-          <div className="relative">
-            <button onClick={() => setShow(!show)} className="flex items-center">
-              <img
-                src="https://d91ztyz4qy326.cloudfront.net/storeking/1/english.png"
-                className="w-6 h-6 mr-1"
-                alt="language"
-              />
-              English <i className="fa-solid fa-angle-down ml-1"></i>
-            </button>
-            {show && <Dropdown data={country} />}
-          </div>
-
-          <div className="flex">
-            <span className="w-7 h-7 bg-green-500 rounded-full flex justify-center items-center mr-1">
-              <i className="fa-regular fa-heart text-base text-white"></i>
-            </span>
-            Favorite
-          </div>
-
-          <div className="flex">
-            <span className="w-7 h-7 bg-green-500 rounded-full flex justify-center items-center mr-1">
-              <i className="fa-regular fa-user text-base text-white"></i>
-            </span>
-
-            {token ? (
-              <div className="relative inline-block">
-                <button onClick={() => setDesh(!desh)}>Profile</button>
-                {desh && <Dropdown data={profile} />}
-              </div>
-            ) : (
-              <Link to="/login">Account</Link>
-            )}
-          </div>
-        </div>
       </div>
-      <hr className="border border-gray-100 w-full" />
-    </>
+
+      {/* Right nav */}
+      <ul className="flex space-x-4  ml-20 text-gray-700 items-center text-center">
+       
+        <li> <NavLink to="/Home" className={"hover:text-[#C7A66D] cursor-pointer capitalize"}>Home</NavLink></li>
+       <li> <NavLink to="/about" className={"hover:text-[#C7A66D] cursor-pointer capitalize"}>ABOUT</NavLink></li>
+       <li> <NavLink to="/contact" className={"hover:text-[#C7A66D] cursor-pointer capitalize"}>CONTACT</NavLink></li>
+      </ul>
+
+      {/* Icons */}
+     <div className="flex text-lg space-x-5 px-10 justify-center items-center text-gray-950 opacity-90">
+  <i className="fa-solid fa-user cursor-pointer ml-5"></i>
+  <i className="fas fa-search cursor-pointer"></i>
+
+  <div className="relative gap-2 ">
+   
+    <i className="fa-solid fa-bag-shopping mb-2 hover:text-[#C7A66D]  cursor-pointer">
+     <span className="absolute -top-2 -right-2 text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full bg-black hover:bg-[#C7A66D]">
+      0
+    </span>
+      
+    </i>
+  </div>
+</div>
+
+    </div>
   );
 };
 
