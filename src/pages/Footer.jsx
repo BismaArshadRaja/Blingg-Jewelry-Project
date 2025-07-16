@@ -1,4 +1,5 @@
 import React from "react";  
+import { NavLink} from "react-router-dom";
 
 const  Footer = () => {
     return(
@@ -8,11 +9,26 @@ const  Footer = () => {
           </div>
           <div className="flex justify-center gap-10 text-2xl">
            
-            <i class="fa-brands fa-twitter cursor-pointer "></i>
-            <i class="fa-brands fa-youtube cursor-pointer"></i>
-            <i class="fa-brands fa-pinterest cursor-pointer"></i>
-            <i class="fa-brands fa-facebook cursor-pointer"></i>
-            <i class="fa-brands fa-square-instagram cursor-pointer"></i>
+           <a href="https://x.com/NAVTTCOfficial/status/1879400315222716486" target="_blank" rel="noopener noreferrer">
+  <i class="fa-brands fa-twitter cursor-pointer"></i>
+</a>
+
+<a href="https://www.youtube.com/NAVTTCOfficial" target="_blank" rel="noopener noreferrer">
+  <i class="fa-brands fa-youtube cursor-pointer"></i>
+</a>
+
+<a href="https://www.pinterest.com/pin/national-vocational-and-technical-training-commission-navttc--410038741077411061/" target="_blank" rel="noopener noreferrer">
+  <i class="fa-brands fa-pinterest cursor-pointer"></i>
+</a>
+
+<a href="https://www.facebook.com/NAVTTCOfficial/" target="_blank" rel="noopener noreferrer">
+  <i class="fa-brands fa-facebook cursor-pointer"></i>
+</a>
+
+<a href="https://www.instagram.com/navttcofficial/?hl=en" target="_blank" rel="noopener noreferrer">
+  <i class="fa-brands fa-square-instagram cursor-pointer"></i>
+</a>
+
           </div>
 
           <div className="flex justify-evenly w-[25%] items-center gap-x-20 mx-16">

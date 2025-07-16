@@ -1,8 +1,11 @@
 
-    import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { earData } from '../utils/EarData';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../store/slice/cartSlice';
     
     function Earrings(){
+      const dispatch = useDispatch();
       return (
         <>
        <div className='flex justify-between items-center p-4'>
@@ -15,9 +18,18 @@ import { earData } from '../utils/EarData';
           <hr class="w-32 mt-2 border-t-2 border-pink-500 mx-auto" />
                <div className='grid grid-cols-4 px-20 gap-4 overflow-auto mb-10 '>
                  {earData.map((item) => (
-                   <div key={item.id}>
+                   <div key={item.id} className='relative'>
                      <i className="fa-regular fa-heart absolute mt-20 ml-64 cursor-pointer flex hover:text-pink-500 hover:bg-white"></i>
-                     <img className='grid grid-cols-4 gap-4 overflow-auto  w-full h-[300px] mt-16 justify-between items-center object-cover cursor-pointer ' src={item.image} alt={item.title} />
+                     <img className='grid grid-cols-4 gap-4 overflow-auto  w-full h-[350px] mt-16 justify-between items-center object-cover cursor-pointer ' src={item.image} alt={item.title} />
+                    {/* icon button */}
+                     <button
+                      onClick={(e)=> {
+                        e.preventDefault();
+                        dispatch(addToCart(item));
+                      }}
+                     >
+                      <i className="fa-solid fa-bag-shopping bottom-2 right-4 absolute mb-[70px] text-white bg-black bg-opacity-30 rounded-full p-2 hover:bg-pink-500 hover:bg-opacity-80 cursor-pointer"></i>
+                     </button>
                      <h2 className='text-sm font-semibold text-gray-800 mt-2'>{item.title}</h2>
                      <p className='text-xs font-semibold text-gray-800 mt-1'>{item.price}</p>
                    </div>
