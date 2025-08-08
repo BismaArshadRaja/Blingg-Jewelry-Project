@@ -8,8 +8,12 @@ const Necklaces = () => {
 
   // For modal
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [quantity, setQuantity] = useState(1);
 
-  const closeModal = () => setSelectedProduct(null);
+  const closeModal = () => {
+    setSelectedProduct(null);
+    setQuantity(1);
+  };
 
   return (
     <div className="mx-2">
@@ -75,23 +79,42 @@ const Necklaces = () => {
             >
               ✕
             </button>
+
+            {/* Product Image */}
             <img
               src={selectedProduct.image}
               alt={selectedProduct.title}
-              className="w-full h-[300px] object-cover rounded-md"
+              className="w-full h-[330px] object-cover rounded-md"
             />
+
+            {/* Title */}
             <h2 className="text-2xl font-bold mt-4">{selectedProduct.title}</h2>
-            <p className="mt-2 text-gray-600">{selectedProduct.description}</p>
+
+            {/* Price */}
             <p className="mt-2 font-semibold">{selectedProduct.price}</p>
-            <button
-              className="mt-4 bg-pink-500 text-white px-4 py-2 rounded hover:bg-pink-600"
-              onClick={() => {
-                dispatch(addToCart(selectedProduct));
-                closeModal();
-              }}
-            >
-              Add to Cart
-            </button>
+
+            {/* Quantity + Add to Cart Row */}
+            <div className="flex items-center mt-4 space-x-4">
+              <input
+                type="number"
+                min="1"
+                value={quantity}
+                onChange={(e) => setQuantity(Number(e.target.value))}
+                className="border rounded px-2 py-1 w-16"
+              />
+              <button
+                className="bg-pink-500 text-white px-4 py-2 rounded hover:bg-pink-600"
+                onClick={() => {
+                  dispatch(addToCart({ ...selectedProduct, quantity }));
+                  closeModal();
+                }}
+              >
+                Add to Cart
+              </button>
+            </div>
+
+            {/* Description at the End */}
+            <p className="mt-4 text-gray-600">{selectedProduct.description}</p>
           </div>
         </div>
       )}
