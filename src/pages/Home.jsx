@@ -14,13 +14,13 @@ import Products from "../components/Products";
 const Home = () => {
     return(
         <div>
-           
-            <Banner/>
+            
+            <MidBanner/>
             <BrandsName/>
             <Trending/>
             <NewArrivals/>
             <Products/>
-            <MidBanner/>
+            <Banner/>
             <Content/>
             <OurServices/>
            

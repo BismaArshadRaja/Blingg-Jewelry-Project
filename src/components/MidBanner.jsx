@@ -21,7 +21,7 @@ function MidBanner() {
 
   return (
     <div className="w-screen h-screen flex items-center justify-center mb-5">
-      <div className="relative w-full h-[520px] overflow-hidden">
+      <div className="relative w-full h-full overflow-hidden">
 
         {/* Local video file */}
         <video
