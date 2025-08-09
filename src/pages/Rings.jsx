@@ -1,20 +1,26 @@
-import React, { useState } from "react";
-import rings from "../assets/rings.mp4";
-import { ringsData } from "../utils/ringsData";
+import { useState } from "react";
+import ringsVideo from "../assets/rings.mp4"; 
+import{ ringsData} from "../utils/ringsData.js"; 
 import { useDispatch } from "react-redux";
 import { addToCart } from "../store/slice/cartSlice";
 import { NavLink } from "react-router-dom";
 
 function Rings() {
   const dispatch = useDispatch();
+  
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
+  const [hoveredId, setHoveredId] = useState(null); // For hover effect
+
+  const closeModal = () => {
+    setSelectedProduct(null);
+    setQuantity(1);
+  };
 
   const handleAddToCart = () => {
     if (selectedProduct) {
       dispatch(addToCart({ ...selectedProduct, quantity }));
-      setSelectedProduct(null);
-      setQuantity(1);
+      closeModal();
     }
   };
 
@@ -25,7 +31,7 @@ function Rings() {
         <div className="relative w-full h-[560px] overflow-hidden">
           <video
             className="absolute top-0 left-0 w-full h-full object-cover"
-            src={rings}
+            src={ringsVideo}
             autoPlay
             muted
             playsInline
@@ -38,7 +44,7 @@ function Rings() {
             <h1 className="text-[50px] font-serif uppercase">
               Be always <br /> on trend
             </h1>
-            <p className="mt-5 text-sm align-middle text-slate-200">
+            <p className="mt-5 text-sm text-slate-200">
               Lorem ipsum dolor sit amet,<br /> consectetur adipiscing elit. <br /> Ut elit tellus, <br /> luctus nec ullamcorper mattis, <br /> pulvinar dapibus leo.
             </p>
           </div>
@@ -54,38 +60,41 @@ function Rings() {
       </div>
 
       {/* Product Cards */}
-      <div className="mt-10">
-        <div className="grid grid-cols-4 px-20 gap-4 overflow-auto mb-10">
-          {ringsData.map((item) => (
-            <div
-              key={item.id}
-              className="relative cursor-pointer"
-              onClick={() => setSelectedProduct(item)}
-            >
-              <i className="fa-regular fa-heart absolute mt-[75px] ml-[230px] cursor-pointer flex hover:text-pink-500 hover:bg-white"></i>
+      <div className="grid grid-cols-4 px-20 gap-4 overflow-auto mb-10">
+        {ringsData.map((item) => (
+          <div key={item.id} className="relative">
+            {/* Wishlist Icon */}
+            <i className="fa-regular fa-heart absolute mt-20 ml-[230px] cursor-pointer hover:text-pink-500 hover:bg-white"></i>
 
-              <img
-                className="w-full h-[350px] mt-16 object-cover"
-                src={item.image}
-                alt={item.title}
-              />
-               <button
-                  onClick={(e)=> {
-                  e.preventDefault();
-                  dispatch(addToCart(item));
-                  }}
-                 >
-                  <i className="fa-solid fa-bag-shopping bottom-2 right-4 absolute mb-[70px] text-white bg-black bg-opacity-30 rounded-full p-2 hover:bg-pink-500 hover:bg-opacity-80 cursor-pointer"></i>
-                 </button>
-              <h2 className="text-sm font-semibold text-gray-800 mt-2">
-                {item.title}
-              </h2>
-              <p className="text-xs font-semibold text-gray-800 mt-1">
-                {item.price}
-              </p>
-            </div>
-          ))}
-        </div>
+            {/* Product Image */}
+            <img
+              className="w-full h-[350px] mt-16 object-cover cursor-pointer"
+              src={hoveredId === item.id ? item.hoverImage : item.image}
+              alt={item.title}
+              onMouseEnter={() => setHoveredId(item.id)}
+              onMouseLeave={() => setHoveredId(null)}
+              onClick={() => setSelectedProduct(item)}
+            />
+
+            {/* Add to Cart Icon */}
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                dispatch(addToCart(item));
+              }}
+            >
+              <i className="fa-solid fa-bag-shopping bottom-2 right-4 absolute mb-[70px] text-white bg-black bg-opacity-30 rounded-full p-2 hover:bg-pink-500 hover:bg-opacity-80 cursor-pointer"></i>
+            </button>
+
+            {/* Product Info */}
+            <h2 className="text-sm font-semibold text-gray-800 mt-2">
+              {item.title}
+            </h2>
+            <p className="text-xs font-semibold text-gray-800 mt-1">
+              {item.price}
+            </p>
+          </div>
+        ))}
       </div>
 
       {/* Product Detail Modal */}
@@ -95,7 +104,7 @@ function Rings() {
             {/* Close Button */}
             <button
               className="absolute top-3 right-3 text-gray-500 hover:text-black"
-              onClick={() => setSelectedProduct(null)}
+              onClick={closeModal}
             >
               ✕
             </button>
@@ -117,22 +126,15 @@ function Rings() {
               <span className="text-lg font-bold text-pink-500">
                 {selectedProduct.price}
               </span>
-              {selectedProduct.oldPrice && (
-                <span className="text-sm line-through text-gray-500">
-                  {selectedProduct.oldPrice}
-                </span>
-              )}
             </div>
 
-            {/* Quantity Selector */}
+            {/* Quantity + Add to Cart */}
             <div className="flex items-center gap-2 mb-4">
               <input
                 type="number"
                 min="1"
                 value={quantity}
-                onChange={(e) =>
-                  setQuantity(parseInt(e.target.value) || 1)
-                }
+                onChange={(e) => setQuantity(parseInt(e.target.value) || 1)}
                 className="border w-16 p-1 text-center"
               />
               <button

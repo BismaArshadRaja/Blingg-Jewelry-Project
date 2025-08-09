@@ -6,7 +6,7 @@ import { necklaces } from "../utils/neckData";
 const Necklaces = () => {
   const dispatch = useDispatch();
 
-  // For modal
+  // products detail ke liye
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
 
