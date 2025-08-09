@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { braceData } from "../utils/BraceData.js";
-import { useDispatch } from 'react-redux';
-import { addToCart } from '../store/slice/cartSlice';
+import { useDispatch } from "react-redux";
+import { addToCart } from "../store/slice/cartSlice";
 
 function Bracelets() {
   const dispatch = useDispatch();
@@ -9,10 +9,11 @@ function Bracelets() {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [quantity, setQuantity] = useState(1);
+  const [hoveredId, setHoveredId] = useState(null); // Hover state
 
   const openModal = (product) => {
     setSelectedProduct(product);
-    setQuantity(1); // reset quantity when opening modal
+    setQuantity(1);
     setIsModalOpen(true);
   };
 
@@ -24,14 +25,14 @@ function Bracelets() {
   return (
     <>
       {/* Banner Images */}
-      <div className='flex justify-between items-center'>
+      <div className="flex justify-between items-center">
         <img
-          className='w-[50%] h-[600px]'
+          className="w-[50%] h-[600px]"
           src="https://media.tiffany.com/is/image/tiffanydm/2025_ROWMOTHERSDAY_BG_2X2_ONFIG_4?$tile$&wid=1488&hei=1488&defaultImage=NoImageAvailableInternal&fmt=webp"
           alt="right"
         />
         <img
-          className='w-[50%] h-[600px]'
+          className="w-[50%] h-[600px]"
           src="https://media.tiffany.com/is/image/tiffanydm/2024_Lock_Narrow_BG_2x2_TILE?$tile$&wid=1488&hei=1488&defaultImage=NoImageAvailableInternal&fmt=webp"
           alt="left"
         />
@@ -39,20 +40,24 @@ function Bracelets() {
 
       {/* Product Grid */}
       <div className="mt-10">
-        <h1 className='flex font-bold justify-center items-center text-3xl text-center'>Bracelets</h1>
+        <h1 className="flex font-bold justify-center items-center text-3xl text-center">
+          Bracelets
+        </h1>
         <hr className="w-32 mt-2 border-t-2 border-pink-500 mx-auto" />
-        <div className='grid grid-cols-4 px-20 gap-4 overflow-auto mb-10'>
+        <div className="grid grid-cols-4 px-20 gap-4 overflow-auto mb-10">
           {braceData.map((item) => (
             <div key={item.id} className="relative">
               {/* Wishlist Icon */}
-              <i className="fa-regular fa-heart absolute mt-[70px] ml-[230px] cursor-pointer flex hover:text-pink-500 hover:bg-white"></i>
+              <i className="fa-regular fa-heart absolute mt-20 ml-[230px] cursor-pointer flex hover:text-pink-500 hover:bg-white"></i>
 
-              {/* Product Image - Opens Modal */}
+              {/* Product Image */}
               <img
-                onClick={() => openModal(item)}
-                className='w-full h-[350px] mt-16 object-cover cursor-pointer'
-                src={item.image}
+                className="w-full h-[350px] mt-16 object-cover cursor-pointer"
+                src={hoveredId === item.id ? item.hoverImage : item.image}
                 alt={item.title}
+                onMouseEnter={() => setHoveredId(item.id)}
+                onMouseLeave={() => setHoveredId(null)}
+                onClick={() => openModal(item)}
               />
 
               {/* Add to Cart Button */}
@@ -66,8 +71,12 @@ function Bracelets() {
               </button>
 
               {/* Title & Price */}
-              <h2 className='text-sm font-semibold text-gray-800 mt-2'>{item.title}</h2>
-              <p className='text-xs font-semibold text-gray-800 mt-1'>{item.price}</p>
+              <h2 className="text-sm font-semibold text-gray-800 mt-2">
+                {item.title}
+              </h2>
+              <p className="text-xs font-semibold text-gray-800 mt-1">
+                {item.price}
+              </p>
             </div>
           ))}
         </div>
@@ -93,12 +102,16 @@ function Bracelets() {
             />
 
             {/* Title */}
-            <h2 className="text-lg font-semibold mt-4">{selectedProduct.title}</h2>
+            <h2 className="text-lg font-semibold mt-4">
+              {selectedProduct.title}
+            </h2>
 
             {/* Price */}
-            <p className="text-pink-500 font-bold text-lg mt-1">{selectedProduct.price}</p>
+            <p className="text-pink-500 font-bold text-lg mt-1">
+              {selectedProduct.price}
+            </p>
 
-            {/* Quantity + Add to Cart in One Row */}
+            {/* Quantity + Add to Cart */}
             <div className="flex items-center mt-3 space-x-2">
               <input
                 type="number"
@@ -120,7 +133,8 @@ function Bracelets() {
 
             {/* Description */}
             <p className="text-gray-600 mt-4">
-              {selectedProduct.description || "A classic bracelet made from premium materials."}
+              {selectedProduct.description ||
+                "A classic bracelet made from premium materials."}
             </p>
           </div>
         </div>
