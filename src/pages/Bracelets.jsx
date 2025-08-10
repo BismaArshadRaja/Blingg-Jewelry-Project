@@ -52,7 +52,7 @@ function Bracelets() {
 
               {/* Product Image */}
               <img
-                className="w-full h-[350px] mt-16 object-cover cursor-pointer"
+               className="w-full h-[350px] mt-16 object-cover cursor-pointer shadow-lg hover:opacity-100 transition-opacity delay-1000 duration-500"
                 src={hoveredId === item.id ? item.hoverImage : item.image}
                 alt={item.title}
                 onMouseEnter={() => setHoveredId(item.id)}
@@ -71,7 +71,7 @@ function Bracelets() {
               </button>
 
               {/* Title & Price */}
-              <h2 className="text-sm font-semibold text-gray-800 mt-2">
+              <h2 className="text-sm font-semibold text-gray-800 ">
                 {item.title}
               </h2>
               <p className="text-xs font-semibold text-gray-800 mt-1">

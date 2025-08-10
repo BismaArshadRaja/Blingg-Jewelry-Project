@@ -4,7 +4,7 @@ function ProductDetailModal({ product, onClose, onAddToCart }) {
   if (!product) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 ">
       <div className="bg-white rounded-lg max-w-4xl w-full p-6 relative">
         
         {/* Close Button */}
@@ -40,7 +40,7 @@ function ProductDetailModal({ product, onClose, onAddToCart }) {
           <div>
             <h2 className="text-xl font-semibold">{product.title}</h2>
             <div className="mt-2">
-              <span className="text-yellow-600 text-lg font-bold">{product.price}</span>
+              <span className="text-pink-600 text-lg font-bold">{product.price}</span>
               <span className="line-through text-gray-500 text-sm ml-2">{product.oldPrice}</span>
             </div>
 
@@ -62,16 +62,7 @@ function ProductDetailModal({ product, onClose, onAddToCart }) {
               </button>
             </div>
 
-            {/* Share Buttons */}
-            <div className="mt-6">
-              <span className="font-semibold">Share This Product: </span>
-              <div className="flex gap-3 mt-2 text-gray-500">
-                <i className="fab fa-facebook-f cursor-pointer hover:text-black"></i>
-                <i className="fab fa-twitter cursor-pointer hover:text-black"></i>
-                <i className="fab fa-instagram cursor-pointer hover:text-black"></i>
-                <i className="fab fa-pinterest-p cursor-pointer hover:text-black"></i>
-              </div>
-            </div>
+            
           </div>
         </div>
       </div>

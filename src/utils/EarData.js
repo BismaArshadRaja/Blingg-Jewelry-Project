@@ -17,11 +17,11 @@ export const earData = [
 },
 {
     id: 3,
-    image: "https://media.tiffany.com/is/image/Tiffany/EcomBrowseM/tiffany-signature-pearlsearrings-23100509_870395_ED_M.jpg?defaultImage=NoImageAvailableInternal&fmt=webp",
+    image: "https://media.tiffany.com/is/image/tco/60022029_ER_MAIN1X1?hei=2000&wid=2000&_gl=1*19ejne0*_gcl_au*MTExNDkwODA3NS4xNzQ3NzM4NDMw*_ga*OTY2NTUwNzY0LjE3NTQ0MTY1ODk.*_ga_6LS0S7KLVS*czE3NTQ4MDE1MDkkbzE1JGcxJHQxNzU0ODAxNjYwJGo0NSRsMCRoODg4Mjk4ODI.*_fplc*YXFvckJhMnh5MWI3a3JQUzVoRlRRUnJNUVVaeUc1WSUyRlVmMHkxWUpYTUdHdmM3RVBMemxTVG5FODE1NXFQRXR2azE2QyUyQkRwWWpKRld2Szh3T1hhdlRubDFjR01kMyUyRnJYWHExS1l1c0p5NmtYJTJGYmFGR0pmbkpFcTZFY3BMNlElM0QlM0Q.",
     title: "Gold with Pave Diamonds",
     price: '$10,200',
     description: "Earrings in Yellow Gold and Platinum with Diamonds",
-    hoverImage: "https://media.tiffany.com/is/image/tco/60126529_ER_SIO2X1?hei=2000&wid=2000"
+    hoverImage: "https://media.tiffany.com/is/image/tco/60022029_ER_SIO2X1?hei=2000&wid=2000"
 },
 {
     id: 4,

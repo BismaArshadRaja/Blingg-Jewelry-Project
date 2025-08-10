@@ -39,11 +39,11 @@ const Necklaces = () => {
           return (
             <div key={item.id} className="relative">
               {/* Wishlist Icon */}
-              <i className="fa-regular fa-heart absolute mt-20 ml-[230px] cursor-pointer flex hover:text-pink-500 hover:bg-white"></i>
+              <i className="fa-regular fa-heart absolute mt-[75px] ml-[220px] cursor-pointer flex hover:text-pink-500 hover:bg-white"></i>
 
               {/* Product Image (Click for Modal) */}
               <img
-                className="w-full h-[350px] mt-16 object-cover cursor-pointer"
+                className="w-full h-[350px] mt-16 object-cover cursor-pointer shadow-lg hover:opacity-100 transition-opacity delay-1000 duration-500"
                 src={imgSrc}
                 alt={item.title}
                 onMouseEnter={() => setImgSrc(item.hoverImage)}
@@ -62,7 +62,7 @@ const Necklaces = () => {
               </button>
 
               {/* Product Name & Price */}
-              <h2 className="text-sm font-semibold text-gray-800 mt-2">{item.title}</h2>
+              <h2 className="text-sm font-semibold text-gray-800 ">{item.title}</h2>
               <p className="text-xs font-semibold text-gray-800 mt-1">{item.price}</p>
             </div>
           );

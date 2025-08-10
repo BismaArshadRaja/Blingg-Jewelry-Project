@@ -64,11 +64,11 @@ function Rings() {
         {ringsData.map((item) => (
           <div key={item.id} className="relative">
             {/* Wishlist Icon */}
-            <i className="fa-regular fa-heart absolute mt-20 ml-[230px] cursor-pointer hover:text-pink-500 hover:bg-white"></i>
+            <i className="fa-regular fa-heart absolute mt-[75px] ml-[220px]  cursor-pointer hover:text-pink-500 hover:bg-white"></i>
 
             {/* Product Image */}
             <img
-              className="w-full h-[350px] mt-16 object-cover cursor-pointer"
+              className="w-full h-[350px] mt-16 object-cover cursor-pointer shadow-lg hover:opacity-100 transition-opacity delay-1000 duration-500"
               src={hoveredId === item.id ? item.hoverImage : item.image}
               alt={item.title}
               onMouseEnter={() => setHoveredId(item.id)}
@@ -87,7 +87,7 @@ function Rings() {
             </button>
 
             {/* Product Info */}
-            <h2 className="text-sm font-semibold text-gray-800 mt-2">
+            <h2 className="text-sm font-semibold text-gray-800 ">
               {item.title}
             </h2>
             <p className="text-xs font-semibold text-gray-800 mt-1">

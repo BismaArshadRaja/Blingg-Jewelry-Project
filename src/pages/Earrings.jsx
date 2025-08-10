@@ -29,14 +29,14 @@ function Earrings() {
   return (
     <>
       {/* Top Banner */}
-      <div className='flex justify-between items-center p-4'>
+      <div className='flex justify-between items-center px-4 mt-0'>
         <img
-          className='w-[50%] h-[600px]'
+          className='w-[50%] h-[550px]'
           src="https://media.tiffany.com/is/image/tiffanydm/2025_HW_2x2_TILE1?$tile$&wid=1488&hei=1488"
           alt="right"
         />
         <img
-          className='w-[50%] h-[600px]'
+          className='w-[50%] h-[550px]'
           src="https://media.tiffany.com/is/image/tiffanydm/2024_ICONS_BC_2x2_ONFIG2?$tile$&wid=1488&hei=1488"
           alt="left"
         />
@@ -51,11 +51,11 @@ function Earrings() {
           {earData.map((item) => (
             <div key={item.id} className="relative">
               {/* Wishlist Icon */}
-              <i className="fa-regular fa-heart absolute mt-20 ml-[230px] cursor-pointer flex hover:text-pink-500 hover:bg-white"></i>
+              <i className="fa-regular fa-heart absolute mt-[75px] ml-[220px] cursor-pointer flex hover:text-pink-500 hover:bg-white"></i>
 
               {/* Product Image */}
               <img
-                className="w-full h-[350px] mt-16 object-cover cursor-pointer"
+                className="w-full h-[350px] mt-16 object-cover cursor-pointer shadow-lg hover:opacity-100 transition-opacity delay-1000 duration-500"
                 src={hoveredId === item.id ? item.hoverImage : item.image}
                 alt={item.title}
                 onMouseEnter={() => setHoveredId(item.id)}
@@ -101,7 +101,7 @@ function Earrings() {
             />
 
             {/* Title */}
-            <h2 className="text-2xl font-bold mt-4">{selectedProduct.title}</h2>
+            <h2 className="text-2xl font-bold">{selectedProduct.title}</h2>
 
             {/* Price */}
             <p className="text-pink-500 text-xl font-semibold mt-2">{selectedProduct.price}</p>
